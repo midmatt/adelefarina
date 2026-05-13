@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adele Farina — Global Events Executive & Speaker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ivory: #faf7f2;
+    --cream: #f2ede4;
+    --charcoal: #1c1c1e;
+    --warm-black: #0f0e0c;
+    --gold: #b8975a;
+    --gold-light: #d4b47a;
+    --muted: #7a7468;
+    --border: #ddd8ce;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--ivory);
+    color: var(--charcoal);
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.5rem 4rem;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+  }
+  nav.scrolled { border-color: var(--border); }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--charcoal); text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 0;
+    position: relative; overflow: hidden;
+  }
+  .hero-text {
+    padding: 8rem 5rem 6rem 6rem;
+    position: relative; z-index: 2;
+  }
+  .hero-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: block; width: 40px; height: 1px; background: var(--gold);
+  }
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--warm-black);
+    margin-bottom: 0.3rem;
+  }
+  .hero-name em { font-style: italic; color: var(--gold); }
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 1.8vw, 1.45rem);
+    font-weight: 300; font-style: italic;
+    color: var(--muted); margin-bottom: 2.5rem; line-height: 1.5;
+  }
+  .hero-certs {
+    display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .cert-badge {
+    font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    background: transparent;
+  }
+  .hero-stats {
+    display: flex; gap: 3rem;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem; font-weight: 300; color: var(--charcoal); line-height: 1;
+  }
+  .stat-num span { font-size: 1.6rem; color: var(--gold); }
+  .stat-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-top: 0.3rem;
+  }
+
+  .hero-visual {
+    height: 100vh;
+    background: var(--charcoal);
+    position: relative; overflow: hidden;
+  }
+  .hero-visual::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1c1c1e 0%, #2a2520 50%, #1a1612 100%);
+  }
+  .hero-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 30% 70%, rgba(184,151,90,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(184,151,90,0.06) 0%, transparent 40%);
+  }
+  .hero-quote {
+    position: absolute; bottom: 4rem; left: 3rem; right: 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.45rem; font-style: italic; font-weight: 300;
+    color: rgba(255,255,255,0.7); line-height: 1.6;
+    border-left: 2px solid var(--gold);
+    padding-left: 1.5rem;
+  }
+  .hero-quote cite {
+    display: block; margin-top: 1rem;
+    font-family: 'Jost', sans-serif;
+    font-style: normal; font-size: 0.7rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold);
+  }
+  .hero-geo {
+    position: absolute; top: 4rem; right: 3rem;
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+  .hero-geo::before {
+    content: '— ';
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 4rem; }
+  .section-label {
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .section-label::after {
+    content: ''; display: block; height: 1px; width: 50px; background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    font-weight: 300; line-height: 1.2;
+    color: var(--charcoal); margin-bottom: 1rem;
+  }
+
+  /* ABOUT */
+  #about { background: var(--ivory); }
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1.6fr; gap: 6rem; align-items: start;
+    margin-top: 4rem;
+  }
+  .about-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 300; line-height: 1.7;
+    color: var(--charcoal);
+  }
+  .about-intro em { font-style: italic; color: var(--gold); }
+  .about-body p {
+    font-size: 0.95rem; line-height: 1.85; color: var(--muted);
+    margin-bottom: 1.4rem;
+  }
+  .skills-row {
+    display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.5rem;
+  }
+  .skill-tag {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border: 1px solid var(--border); color: var(--muted);
+    background: transparent; transition: all 0.2s;
+  }
+  .skill-tag:hover { border-color: var(--gold); color: var(--gold); }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+  .exp-list { margin-top: 4rem; }
+  .exp-item {
+    display: grid; grid-template-columns: 200px 1fr; gap: 3rem;
+    padding: 3rem 0; border-bottom: 1px solid var(--border);
+  }
+  .exp-item:first-child { border-top: 1px solid var(--border); }
+  .exp-meta {}
+  .exp-dates {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem;
+  }
+  .exp-company {
+    font-size: 0.8rem; color: var(--muted); line-height: 1.4;
+  }
+  .exp-content {}
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem; font-weight: 400; color: var(--charcoal);
+    margin-bottom: 1rem; line-height: 1.2;
+  }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li {
+    font-size: 0.9rem; color: var(--muted); line-height: 1.7;
+    padding: 0.4rem 0; padding-left: 1.2rem; position: relative;
+  }
+  .exp-bullets li::before {
+    content: '—'; position: absolute; left: 0; color: var(--gold);
+    font-size: 0.7rem; top: 0.55rem;
+  }
+  .exp-highlight {
+    display: inline-block; margin-top: 1rem;
+    font-size: 0.78rem; letter-spacing: 0.08em;
+    color: var(--gold); border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 2px;
+  }
+
+  /* SPEAKING */
+  #speaking { background: var(--charcoal); }
+  #speaking .section-label { color: var(--gold-light); }
+  #speaking .section-title { color: var(--ivory); }
+  .speaking-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem; font-style: italic; font-weight: 300;
+    color: rgba(255,255,255,0.5); margin-top: 1rem; margin-bottom: 4rem;
+    max-width: 600px; line-height: 1.7;
+  }
+  .speaking-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .talk-card {
+    background: #161412;
+    padding: 2.5rem 2rem;
+    position: relative; overflow: hidden;
+    transition: background 0.3s;
+  }
+  .talk-card:hover { background: #1e1b17; }
+  .talk-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0;
+    height: 2px; background: var(--gold); transform: scaleX(0);
+    transform-origin: left; transition: transform 0.4s;
+  }
+  .talk-card:hover::before { transform: scaleX(1); }
+  .talk-org {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1rem;
+  }
+  .talk-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 400; color: rgba(255,255,255,0.85);
+    line-height: 1.4; margin-bottom: 1.2rem;
+  }
+  .talk-theme {
+    font-size: 0.75rem; color: rgba(255,255,255,0.3);
+    line-height: 1.6;
+  }
+  .talk-icon {
+    position: absolute; bottom: 1.5rem; right: 1.8rem;
+    font-size: 1.6rem; opacity: 0.08;
+  }
+
+  /* EXPERTISE */
+  #expertise { background: var(--ivory); }
+  .expertise-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem;
+    margin-top: 4rem;
+  }
+  .expertise-card {
+    padding: 2.5rem; border: 1px solid var(--border);
+    position: relative; transition: border-color 0.3s;
+  }
+  .expertise-card:hover { border-color: var(--gold); }
+  .expertise-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300; color: var(--border);
+    line-height: 1; margin-bottom: 1.2rem;
+    transition: color 0.3s;
+  }
+  .expertise-card:hover .expertise-num { color: var(--gold-light); }
+  .expertise-title {
+    font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--charcoal); margin-bottom: 1rem; font-weight: 500;
+  }
+  .expertise-desc {
+    font-size: 0.875rem; color: var(--muted); line-height: 1.75;
+  }
+
+  /* CREDENTIALS */
+  #credentials { background: var(--cream); }
+  .creds-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    margin-top: 4rem;
+  }
+  .cred-item {
+    text-align: center; padding: 2.5rem 1.5rem;
+    border: 1px solid var(--border);
+    background: var(--ivory);
+    transition: border-color 0.3s;
+  }
+  .cred-item:hover { border-color: var(--gold); }
+  .cred-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+  .cred-title {
+    font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--charcoal); margin-bottom: 0.5rem;
+  }
+  .cred-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem; font-style: italic; color: var(--muted);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--warm-black);
+    padding: 8rem 0;
+    text-align: center;
+  }
+  #contact .section-label { justify-content: center; color: var(--gold); }
+  #contact .section-label::after, #contact .section-label::before {
+    display: none;
+  }
+  #contact .section-title {
+    color: var(--ivory); font-size: clamp(2.5rem, 4vw, 3.8rem);
+    margin-bottom: 1.5rem;
+  }
+  .contact-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem; font-style: italic; color: rgba(255,255,255,0.45);
+    margin-bottom: 3.5rem;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+  }
+  .contact-link {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: rgba(255,255,255,0.6); text-decoration: none;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: all 0.3s;
+  }
+  .contact-link:hover {
+    background: var(--gold); color: var(--warm-black);
+    border-color: var(--gold);
+  }
+  .contact-link-primary {
+    background: var(--gold); color: var(--warm-black);
+    border-color: var(--gold);
+  }
+  .contact-link-primary:hover { background: var(--gold-light); border-color: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: #080807;
+    padding: 2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem; color: rgba(255,255,255,0.2); letter-spacing: 0.08em;
+  }
+  .footer-note { font-size: 0.68rem; color: rgba(255,255,255,0.12); letter-spacing: 0.1em; }
+
+  /* DIVIDER */
+  .gold-rule {
+    width: 60px; height: 1px; background: var(--gold);
+    margin: 2rem 0;
+  }
+
+  /* SCROLL ANIMATIONS */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 2rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .hero-text { padding: 8rem 2rem 4rem; }
+    .container { padding: 0 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    .speaking-grid { grid-template-columns: 1fr; }
+    .expertise-grid { grid-template-columns: 1fr; }
+    .creds-grid { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 1.8rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Adele Farina</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#speaking">Speaking</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Global Events Executive</div>
+    <h1 class="hero-name">Adele<br><em>Farina</em></h1>
+    <p class="hero-title">Vice President, Global Events &amp;<br>Strategic Planning · Speaker · Leader</p>
+    <div class="hero-certs">
+      <span class="cert-badge">CIS</span>
+      <span class="cert-badge">HMCC</span>
+      <span class="cert-badge">CMP — In Progress</span>
+      <span class="cert-badge">NYU Event Mgmt</span>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">200<span>+</span></div>
+        <div class="stat-label">Events Annually</div>
+      </div>
+      <div>
+        <div class="stat-num">$10<span>M</span></div>
+        <div class="stat-label">Portfolio</div>
+      </div>
+      <div>
+        <div class="stat-num">30<span>+</span></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-pattern"></div>
+    <div class="hero-geo">Bay Shore, NY · New York</div>
+    <div class="hero-quote">
+      "I don't just run events — I build the infrastructure, talent, and data culture that make an events function indispensable to the enterprise."
+      <cite>Adele Farina</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <h2 class="section-title">Architect of<br>Event Ecosystems</h2>
+    <div class="about-grid fade-up">
+      <div class="about-intro">
+        Nearly <em>30 years</em> building event programs that move the business forward — from 10-person boardroom roundtables to <em>15,000-attendee</em> international conferences.
+        <div class="gold-rule"></div>
+        <p style="font-family:'Jost',sans-serif; font-size:0.85rem; color:var(--muted); font-weight:300; line-height:1.8;">Born and raised in the Bronx as one of seven sisters — bringing New Yorker grit and global perspective to every room she enters.</p>
+      </div>
+      <div class="about-body">
+        <p>Adele Farina architects event ecosystems that perform at the intersection of brand, pipeline, and commercial strategy. Over 20 years leading complex, matrixed organizations, she has built Centers of Excellence from the ground up — establishing governance frameworks, technology infrastructure, and cross-functional operating models that transform fragmented event activity into unified, measurable growth engines.</p>
+        <p>At ION, she oversees 250–300 global events annually across six countries and eight business portfolios, including flagship client conferences, high-profile tradeshows like AWS re:Invent and FIA Boca, and exclusive executive programs. Her centralized technology platform spanning Cvent, Salesforce, Power BI, Power Apps, NetSuite, and Concur delivers real-time ROI attribution and executive dashboards used for annual budget allocation.</p>
+        <p>Beyond logistics and strategy, Adele is a purpose-driven leader who champions authenticity, mentorship, and people-first leadership — building trust across generations and inspiring teams to thrive.</p>
+        <div class="skills-row">
+          <span class="skill-tag">Centers of Excellence</span>
+          <span class="skill-tag">Matrix Leadership</span>
+          <span class="skill-tag">Pipeline & Revenue Alignment</span>
+          <span class="skill-tag">Event Technology</span>
+          <span class="skill-tag">ROI Frameworks</span>
+          <span class="skill-tag">P&L Ownership</span>
+          <span class="skill-tag">Executive Stakeholder Mgmt</span>
+          <span class="skill-tag">Team Development</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">A Career Defined<br>by Scale &amp; Impact</h2>
+    <div class="exp-list">
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-dates">Mar 2019 — Mar 2026</div>
+          <div class="exp-company">ION Trading Inc.<br>New York, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Senior Director, Global Events &amp; Strategic Planning</div>
+          <ul class="exp-bullets">
+            <li>Built and led a global B2B events Center of Excellence across 8 business lines — owning the operating model, governance framework, portfolio calendar, and 200+ annual programs: conferences, tradeshows, executive forums, and customer summits.</li>
+            <li>Partnered with C-suite to align multi-year event strategy to commercial growth — directly tying program investments to pipeline generation, client retention, and ARR.</li>
+            <li>Architected a centralized technology platform across Cvent, Salesforce, Power BI, Power Apps, NetSuite, and Concur — delivering real-time ROI attribution and executive portfolio dashboards now used for annual budget allocation.</li>
+            <li>Orchestrated a matrixed stakeholder ecosystem — unifying Marketing, Sales, Product, Demand Gen, Finance, and Creative around a single, performance-driven events strategy.</li>
+            <li>Led a global team of 11 across regions and time zones; managed full P&amp;L from $500K to $10M per program with consistent delivery on quality and efficiency.</li>
+          </ul>
+          <span class="exp-highlight">$10M Portfolio · 200+ Events · 8 Business Lines · 6 Countries</span>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-dates">Jun 2016 — Mar 2019</div>
+          <div class="exp-company">AIM Group International USA<br>New York, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Senior Event Operations Director</div>
+          <ul class="exp-bullets">
+            <li>Expanded international B2B meetings and incentive programs into the U.S. for enterprise clients including Amazon, Aston Martin, GM, and DuPont — serving as primary executive contact across planning, creative, and delivery.</li>
+            <li>Led global venue sourcing, contracting, and supplier strategy for complex multi-market B2B programs; negotiated national agreements delivering measurable cost savings.</li>
+          </ul>
+          <span class="exp-highlight">Amazon · Aston Martin · GM · DuPont</span>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-dates">Jul 2014 — Mar 2016</div>
+          <div class="exp-company">Fourth Wall Events<br>New York, NY</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Senior Event Project Manager</div>
+          <ul class="exp-bullets">
+            <li>Directed full-lifecycle B2B event management — roadshows, product launches, conferences, and incentive events — with budgets from $100K to $5M.</li>
+            <li>Implemented Strategic Meetings Management (SMM) program via Cvent, establishing centralized venue sourcing, registration, and analytics infrastructure.</li>
+          </ul>
+          <span class="exp-highlight">$100K–$5M Budgets · SMM Implementation</span>
+        </div>
+      </div>
+
+      <div class="exp-item fade-up">
+        <div class="exp-meta">
+          <div class="exp-dates">1997 — 2014</div>
+          <div class="exp-company">Financial Services,<br>Technology &amp; Healthcare</div>
+        </div>
+        <div class="exp-content">
+          <div class="exp-role">Earlier Leadership — 20 Years of Progressive Growth</div>
+          <ul class="exp-bullets">
+            <li>20 years of progressive B2B event leadership across financial services, technology, healthcare, and professional associations.</li>
+            <li>Key roles at KPMG, JPMorgan Chase, VMware, and IBM — spanning Director of Event &amp; Tradeshow Management, Senior Sourcing &amp; Contracting Specialist, and Senior Operations Event Manager.</li>
+          </ul>
+          <span class="exp-highlight">KPMG · JPMorgan Chase · VMware · IBM</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section id="speaking">
+  <div class="container">
+    <div class="section-label">Speaking</div>
+    <h2 class="section-title">On Stage &amp; On Point</h2>
+    <p class="speaking-intro">Adele speaks at the intersection of events, leadership, and innovation — bringing candor, experience, and vision to every stage.</p>
+    <div class="speaking-grid fade-up">
+
+      <div class="talk-card">
+        <div class="talk-org">MPI — Executive Leadership</div>
+        <div class="talk-title">How AI Will Impact the Events Industry</div>
+        <div class="talk-theme">The future of event strategy, automation, and the human element in an AI-driven landscape.</div>
+        <div class="talk-icon">🤖</div>
+      </div>
+
+      <div class="talk-card">
+        <div class="talk-org">SITE</div>
+        <div class="talk-title">Health &amp; Wellness in the Workplace</div>
+        <div class="talk-theme">Championing well-being as a performance strategy for event and hospitality professionals.</div>
+        <div class="talk-icon">🌿</div>
+      </div>
+
+      <div class="talk-card">
+        <div class="talk-org">ION Internal</div>
+        <div class="talk-title">Women's Leadership Workshop</div>
+        <div class="talk-theme">Empowering women at every level to own their voice, their vision, and their career trajectory.</div>
+        <div class="talk-icon">✦</div>
+      </div>
+
+      <div class="talk-card">
+        <div class="talk-org">M&amp;I Forum</div>
+        <div class="talk-title">Work-Life Balance &amp; Team Leadership</div>
+        <div class="talk-theme">Practical frameworks for building resilient teams while honoring the whole person behind the role.</div>
+        <div class="talk-icon">⚖️</div>
+      </div>
+
+      <div class="talk-card">
+        <div class="talk-org">GMID — Global Meetings Industry Day</div>
+        <div class="talk-title">Event Automation in the Face of AI</div>
+        <div class="talk-theme">How to leverage automation and AI tools without losing the strategic and human heart of meetings.</div>
+        <div class="talk-icon">⚡</div>
+      </div>
+
+      <div class="talk-card">
+        <div class="talk-org">House of Rose</div>
+        <div class="talk-title">Breaking the Ceiling — Women's Leadership</div>
+        <div class="talk-theme">Authentic storytelling on navigating corporate structures, advocating for yourself, and lifting others.</div>
+        <div class="talk-icon">🌹</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="container">
+    <div class="section-label">Expertise</div>
+    <h2 class="section-title">What Sets Her Apart</h2>
+    <div class="expertise-grid fade-up">
+      <div class="expertise-card">
+        <div class="expertise-num">01</div>
+        <div class="expertise-title">Strategic Architecture</div>
+        <div class="expertise-desc">Building Centers of Excellence from the ground up — governance frameworks, operating models, and portfolio strategies that align events to revenue and growth targets.</div>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-num">02</div>
+        <div class="expertise-title">Technology &amp; Data Culture</div>
+        <div class="expertise-desc">Centralized platforms across Cvent, Salesforce, Power BI, and Power Apps delivering real-time ROI attribution, NPS tracking, and executive-level dashboards for budget decisions.</div>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-num">03</div>
+        <div class="expertise-title">Matrix Leadership</div>
+        <div class="expertise-desc">Orchestrating cross-functional stakeholder ecosystems — unifying Sales, Marketing, Product, Finance, and Creative around a single, performance-driven events vision.</div>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-num">04</div>
+        <div class="expertise-title">Commercial Alignment</div>
+        <div class="expertise-desc">Translating event investments into pipeline generation, client retention, and ARR — presenting ROI directly to C-suite and shaping multi-year budget strategy.</div>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-num">05</div>
+        <div class="expertise-title">People-First Leadership</div>
+        <div class="expertise-desc">Mentoring mid-level managers, empowering emerging talent, and building high-trust cultures across generations, time zones, and disciplines.</div>
+      </div>
+      <div class="expertise-card">
+        <div class="expertise-num">06</div>
+        <div class="expertise-title">End-to-End Delivery</div>
+        <div class="expertise-desc">From 10-person executive roundtables to 15,000-attendee international conferences — full P&amp;L ownership with consistent delivery on quality, brand, and efficiency.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section id="credentials">
+  <div class="container">
+    <div class="section-label">Credentials</div>
+    <h2 class="section-title">Certifications &amp; Education</h2>
+    <div class="creds-grid fade-up">
+      <div class="cred-item">
+        <div class="cred-icon">🏅</div>
+        <div class="cred-title">CIS</div>
+        <div class="cred-subtitle">Certified Incentive Specialist, 2020</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">🏥</div>
+        <div class="cred-title">HMCC</div>
+        <div class="cred-subtitle">Healthcare Meeting Compliance Certificate, 2018</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">📋</div>
+        <div class="cred-title">CMP</div>
+        <div class="cred-subtitle">Certified Meeting Professional — In Progress</div>
+      </div>
+      <div class="cred-item">
+        <div class="cred-icon">🎓</div>
+        <div class="cred-title">NYU</div>
+        <div class="cred-subtitle">Certificate in Event &amp; Project Management</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's Connect</h2>
+    <p class="contact-sub">Available for speaking engagements, advisory roles, and strategic consulting.</p>
+    <div class="contact-links">
+      <a href="mailto:adele@adelefarina.com" class="contact-link contact-link-primary">
+        ✉ adele@adelefarina.com
+      </a>
+      <a href="tel:6465238938" class="contact-link">
+        ☏ 646-523-8938
+      </a>
+      <a href="https://www.linkedin.com/in/adelefarina" target="_blank" class="contact-link">
+        in LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-name">Adele Farina, CIS, HMCC — Bay Shore, New York</span>
+  <span class="footer-note">adelefarina.com</span>
+</footer>
+
+<script>
+  // Nav scroll effect
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Fade-up on scroll
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
